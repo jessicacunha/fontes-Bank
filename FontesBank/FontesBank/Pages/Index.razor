@@ -1,7 +1,23 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
 
-<h1>Hello, world!</h1>
+<h1>
+    Welcome to Fontes Bank!
+</h1>
+<hr />
 
-Welcome to your new app.
+<div class="col-md-12">
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    <button type="button" class="btn btn-primary" @onclick="ViewCustomers">
+        View all Customers
+    </button>
+
+</div>
+
+
+@code {
+    private void ViewCustomers()
+    {
+        NavigationManager.NavigateTo("customers");
+    }
+}

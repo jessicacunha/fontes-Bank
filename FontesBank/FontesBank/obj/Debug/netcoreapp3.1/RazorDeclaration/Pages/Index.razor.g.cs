@@ -83,6 +83,18 @@ using FontesBank.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 18 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Index.razor"
+       
+    private void ViewCustomers()
+    {
+        NavigationManager.NavigateTo("customers");
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

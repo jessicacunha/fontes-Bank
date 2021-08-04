@@ -1,0 +1,40 @@
+﻿@page "/customerDetails"
+
+@using Data
+@using FontesBank.Models
+@using Microsoft.Extensions.Configuration
+@inject IUserService _user
+@inject IConfiguration _config
+
+
+
+
+<h3>CustomerDetails</h3>
+
+@if (user == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @foreach (var ctm in user)
+    {
+        <p>
+          @ctm.Name @ctm.Email
+        </p>
+
+    }
+
+}
+
+@code {
+
+    List<UserModel> user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string sql = "select * from fontesbank.users";
+        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+    }
+
+}
