@@ -77,7 +77,21 @@ using FontesBank.Shared;
 #nullable disable
 #nullable restore
 #line 4 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
-using FontesBank.Data;
+using Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
+using FontesBank.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
+using Microsoft.Extensions.Configuration;
 
 #line default
 #line hidden
@@ -91,25 +105,17 @@ using FontesBank.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
+#line 42 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
        
 
-    private List<Customer> customers = new List<Customer>();
+    List<UserModel> user;
 
-
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    customers = await service.GetForecastAsync();
-    //}
-
-    public class Customer
+    protected override async Task OnInitializedAsync()
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public DateTime BirthDate { get; set; }
-        public int CurrentBalance { get; set; }
-        public string Address { get; set; }
+        string sql = "select * from fontesbank.users";
+        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
     }
+
 
     private void Details()
     {
@@ -119,8 +125,8 @@ using FontesBank.Data;
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService _date { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private UserService service { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IConfiguration _config { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService _user { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }

@@ -1,58 +1,54 @@
 ﻿@page "/customers"
 @inject NavigationManager NavigationManager
 
-@using FontesBank.Data
-@inject UserService service
-@inject IUserService _date
+@using Data
+@using FontesBank.Models
+@using Microsoft.Extensions.Configuration
+@inject IUserService _user
+@inject IConfiguration _config
 
 
 <h3>Customers</h3>
 
 <hr />
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Select</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var ctm in customers)
-        {
+<div class="col-md-8">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@ctm.Name</td>
-                <td>@ctm.Email</td>
-                <td>
-                    <button type="button" class="btn btn-primary" @onclick="Details">
-                        Select
-                    </button>
-                </td>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Select</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var ctm in user)
+            {
+                <tr>
+                    <td>@ctm.Name</td>
+                    <td>@ctm.Email</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" @onclick="Details">
+                            Select
+                        </button>
+                    </td>
+                </tr>
+            }
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 
 @code {
 
-    private List<Customer> customers = new List<Customer>();
-
+    List<UserModel> user;
 
     protected override async Task OnInitializedAsync()
     {
-        customers = await service.GetForecastAsync();
+        string sql = "select * from fontesbank.users";
+        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
     }
 
-    public class Customer
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public DateTime BirthDate { get; set; }
-        public int CurrentBalance { get; set; }
-        public string Address { get; set; }
-    }
 
     private void Details()
     {

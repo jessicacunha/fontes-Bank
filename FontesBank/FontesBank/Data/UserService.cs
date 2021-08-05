@@ -26,16 +26,6 @@ namespace FontesBank.Data
             return connection.ExecuteAsync(sql, parameters);
         }
 
-        //private readonly List<Customer> customers = new List<Customer>()
-        //{
-        //    new Customer{ Name = "Jessica Fontes", Email = "jessiksu@gmail.com" },
-        //    new Customer{ Name = "Jessica Fontes", Email = "jessiksu@gmail.com" }
-        //};
-
-        //public Task<List<Customer>> GetForecastAsync()
-        //{
-        //    return Task.FromResult(customers);
-        //}
     };
 
 }
