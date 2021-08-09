@@ -105,11 +105,12 @@ using Microsoft.Extensions.Configuration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
+#line 74 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
        
 
     UserModel user;
     List<UserModel> users;
+    List<TransferModel> transfers;
 
     [Parameter]
     public string CustomerId { get; set; }
@@ -119,6 +120,7 @@ using Microsoft.Extensions.Configuration;
 
         users = await _user.GetUsers();
         user = await _user.GetUserById(int.Parse(CustomerId));
+        transfers = await _transfer.GetTransferById(int.Parse(CustomerId));
     }
 
     private void TransferMoney(int id)
@@ -130,6 +132,7 @@ using Microsoft.Extensions.Configuration;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITransferService _transfer { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IConfiguration _config { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService _user { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }

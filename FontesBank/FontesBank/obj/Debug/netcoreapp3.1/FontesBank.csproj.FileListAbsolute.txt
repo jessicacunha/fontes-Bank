@@ -66,3 +66,11 @@ D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\CustomerDetails.razor.g.cs
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\Razor\Pages\CustomerDetails.razor.g.cs
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\FontesBank.StaticWebAssets.xml
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

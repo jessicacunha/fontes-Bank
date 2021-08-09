@@ -105,12 +105,13 @@ using Microsoft.Extensions.Configuration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\TransferMoney.razor"
+#line 60 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\TransferMoney.razor"
        
 
     TransferModel transfer = new TransferModel();
     UserModel user;
     List<UserModel> users;
+    string errorMessage = "";
 
     [Parameter]
     public string CustomerId { get; set; }
@@ -124,15 +125,44 @@ using Microsoft.Extensions.Configuration;
         transfer.UserFromId = CustomerId;
     }
 
-    private void Transfer()
+
+    protected async Task Transfers()
     {
-        NavigationManager.NavigateTo("/customers");
+        if (transfer.UserToId == null)
+        {
+            errorMessage = "Please select the user to send the amount";
+        }
+        else if
+           (transfer.UserFromId == transfer.UserToId)
+        {
+            errorMessage = "The recipient must be different from the sender.";
+        }
+        else if (transfer.Amount == null || transfer.Amount == "0")
+        {
+            errorMessage = "The amount needs to be entered.";
+        }
+        else if (user.CurrentBalance < float.Parse(transfer.Amount))
+        {
+            errorMessage = "The currente balance is lower then amout value.";
+        }
+        else
+        {
+            await _transfer.SaveTransfer(transfer);
+            await _user.UpdateAmount(transfer);
+            await JsRuntime.InvokeVoidAsync("alert", "Your transfer has been done successfully!"); // Alert
+            NavigationManager.NavigateTo("/customers");
+        }
+
+
+
     }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITransferService _transfer { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IConfiguration _config { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService _user { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }

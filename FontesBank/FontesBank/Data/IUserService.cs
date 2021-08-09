@@ -8,6 +8,8 @@ namespace FontesBank.Data
     {
         Task<List<UserModel>> GetUsers();
         Task<UserModel> GetUserById(int customerId);
+        Task UpdateAmount(TransferModel transferModel);
+
 
     }
 }

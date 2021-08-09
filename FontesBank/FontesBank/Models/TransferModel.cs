@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FontesBank.Models
 {
@@ -10,5 +7,7 @@ namespace FontesBank.Models
         public string UserToId { get; set; }
         public string UserFromId { get; set; }
         public string Amount { get; set; }
+        public DateTime Date { get; set; }
+        public string UserName { get; set; }
     }
 }

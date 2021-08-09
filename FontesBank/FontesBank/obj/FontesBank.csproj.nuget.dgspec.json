@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[2.0.90, )"
             },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.13.0, )"
+            },
             "MudBlazor": {
               "target": "Package",
               "version": "[5.1.0, )"
@@ -51,6 +55,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.26, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
             }
           },
           "imports": [

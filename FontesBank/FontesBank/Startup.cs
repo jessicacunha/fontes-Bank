@@ -25,6 +25,7 @@ namespace FontesBank
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<ITransferService, TransferService>();
 
         }
                 

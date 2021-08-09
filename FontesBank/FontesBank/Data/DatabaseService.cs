@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -31,5 +30,12 @@ namespace FontesBank.Data
 
             return rows.FirstOrDefault();
         }
+
+        public static Task UpdateData<T>(string sql, T parameters, string connectionsString)
+        {
+            using IDbConnection connection = new MySqlConnection(connectionsString);
+            return connection.ExecuteAsync(sql, parameters);
+        }
+                        
     }
 }
