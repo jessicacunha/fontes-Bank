@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using FontesBank.Models;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Data;
@@ -10,21 +12,24 @@ namespace FontesBank.Data
 {
     public class UserService : IUserService
     {
-        public async Task<List<T>> LoadData<T, U>(string sql, U parameters, string connectionsString)
+        private readonly IConfiguration _config;
+        public UserService(IConfiguration _config)
         {
-            using (IDbConnection connection = new MySqlConnection(connectionsString))
-            {
-                var rows = await connection.QueryAsync<T>(sql, parameters);
-
-                return rows.ToList();
-            }
+            this._config = _config;
         }
 
-        public Task SaveData<T>(string sql, T parameters, string connectionsString)
+        public async Task<List<UserModel>> GetUsers()
         {
-            using IDbConnection connection = new MySqlConnection(connectionsString);
-            return connection.ExecuteAsync(sql, parameters);
+            string sql = "select * from fontesbank.users";
+            return await DatabaseService.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
         }
+
+        public async Task<UserModel> GetUserById(int customerId)
+        {
+            string sql = "select * from fontesbank.users where Id = " + customerId;
+            return await DatabaseService.LoadDataOne<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+        }
+
 
     };
 

@@ -1,8 +1,10 @@
-﻿@page "/customerDetails"
+﻿@page "/customers/{customerId}"
+
 
 @using Data
 @using FontesBank.Models
 @using Microsoft.Extensions.Configuration
+@inject NavigationManager NavigationManager
 @inject IUserService _user
 @inject IConfiguration _config
 
@@ -17,24 +19,45 @@
 }
 else
 {
-    @foreach (var ctm in user)
-    {
-        <p>
-          @ctm.Name @ctm.Email
-        </p>
+    <div class="card col-md-4">
+        <div class="card-body">
+            <h4 class="card-title"><b>@user.Name</b></h4>
+            <p class="card-text"><b>E-mail: </b>@user.Email</p>
+            <p class="card-text"><b>Birth Date: </b>@user.BirthDate</p>
+            <p class="card-text"><b>Address: </b>@user.Address</p>
+            <p class="card-text"><b>Current Balance: </b>@user.CurrentBalance</p>
 
-    }
+        </div>
+
+        <button type="button" class="btn btn-primary" @onclick="() => TransferMoney(user.Id)">
+            Transfer Money
+        </button>
+    </div>
+
+
 
 }
 
 @code {
 
-    List<UserModel> user;
+    UserModel user;
+    List<UserModel> users;
+
+    [Parameter]
+    public string CustomerId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        string sql = "select * from fontesbank.users";
-        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+
+        users = await _user.GetUsers();
+        user = await _user.GetUserById(int.Parse(CustomerId));
+    }
+
+    private void TransferMoney(int id)
+    {
+        NavigationManager.NavigateTo("transferMoney/" + id);
     }
 
 }
+
+

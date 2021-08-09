@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using FontesBank.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FontesBank.Data
 {
     public interface IUserService
     {
-        Task<List<T>> LoadData<T, U>(string sql, U parameters, string connectionsString);
+        Task<List<UserModel>> GetUsers();
+        Task<UserModel> GetUserById(int customerId);
 
-        Task SaveData<T>(string sql, T parameters, string connectionsString);
     }
 }

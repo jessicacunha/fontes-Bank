@@ -76,27 +76,27 @@ using FontesBank.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
+#line 4 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
 using Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
+#line 5 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
 using FontesBank.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
+#line 6 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
 using Microsoft.Extensions.Configuration;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/customerDetails")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/customers/{customerId}")]
     public partial class CustomerDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -105,15 +105,25 @@ using Microsoft.Extensions.Configuration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 30 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
+#line 41 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
        
 
-    List<UserModel> user;
+    UserModel user;
+    List<UserModel> users;
+
+    [Parameter]
+    public string CustomerId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        string sql = "select * from fontesbank.users";
-        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+
+        users = await _user.GetUsers();
+        user = await _user.GetUserById(int.Parse(CustomerId));
+    }
+
+    private void TransferMoney(int id)
+    {
+        NavigationManager.NavigateTo("transferMoney/" + id);
     }
 
 
@@ -122,6 +132,7 @@ using Microsoft.Extensions.Configuration;
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IConfiguration _config { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService _user { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

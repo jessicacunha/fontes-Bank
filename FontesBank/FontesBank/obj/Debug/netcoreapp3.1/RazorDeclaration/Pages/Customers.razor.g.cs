@@ -105,21 +105,20 @@ using Microsoft.Extensions.Configuration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
+#line 44 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
        
 
-    List<UserModel> user;
+    List<UserModel> users;
 
     protected override async Task OnInitializedAsync()
     {
-        string sql = "select * from fontesbank.users";
-        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+        users = await _user.GetUsers();
     }
 
 
-    private void Details()
+    private void Details(int id)
     {
-        NavigationManager.NavigateTo("customerDetails");
+        NavigationManager.NavigateTo("customers/" + id);
     }
 
 #line default

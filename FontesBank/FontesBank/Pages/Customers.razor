@@ -18,21 +18,23 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Current Balance</th>
                 <th scope="col">Select</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var ctm in user)
+            @foreach (var ctm in users)
             {
-                <tr>
-                    <td>@ctm.Name</td>
-                    <td>@ctm.Email</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" @onclick="Details">
-                            Select
-                        </button>
-                    </td>
-                </tr>
+            <tr>
+                <td>@ctm.Name</td>
+                <td>@ctm.Email</td>
+                <td>@ctm.CurrentBalance</td>
+                <td>
+                    <button type="button" class="btn btn-primary" @onclick="() => Details(ctm.Id)">
+                        Select
+                    </button>
+                </td>
+            </tr>
             }
 
         </tbody>
@@ -41,17 +43,16 @@
 
 @code {
 
-    List<UserModel> user;
+    List<UserModel> users;
 
     protected override async Task OnInitializedAsync()
     {
-        string sql = "select * from fontesbank.users";
-        user = await _user.LoadData<UserModel, dynamic>(sql, new { }, _config.GetConnectionString("default"));
+        users = await _user.GetUsers();
     }
 
 
-    private void Details()
+    private void Details(int id)
     {
-        NavigationManager.NavigateTo("customerDetails");
+        NavigationManager.NavigateTo("customers/" + id);
     }
 }

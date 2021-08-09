@@ -1,7 +1,75 @@
-﻿@page "/transferMoney"
+﻿@page "/transferMoney/{customerId}"
 
-<h3>Transaction</h3>
+@using Data
+@using FontesBank.Models
+@using Microsoft.Extensions.Configuration
+@inject NavigationManager NavigationManager
+@inject IUserService _user
+@inject IConfiguration _config
+
+<h1>Transaction</h1>
+
+<h3>From:</h3>
+
+<h2><b>@user.Name</b></h2>
+
+
+<EditForm Model="user">
+    <div class="form-group row">
+
+        
+        <label class="col-sm-2 col-form-label">
+            To:
+        </label>
+        <div class="col-sm-10">
+            <InputSelect Model="user" id="id" @bind-Value="transfer.UserToId">
+                *@foreach (var cnt in users)
+                {
+                    <option value="@cnt.Id">@cnt.Name </option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="firstName" class="col-sm-2 col-form-label">
+            Amount: 
+        </label>
+        <div class="col-sm-10">
+            <InputText id="amount" class="form-control" placeholder="0,00"
+                       @bind-Value="transfer.Amount" />
+        </div>
+    </div>
+</EditForm>
+
+
+
+<button type="button" class="btn btn-primary" @onclick="() => Transfer()">
+    Transfer Money
+</button>
 
 @code {
 
+    TransferModel transfer = new TransferModel();
+    UserModel user;
+    List<UserModel> users;
+
+    [Parameter]
+    public string CustomerId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await _user.GetUsers();
+        user = await _user.GetUserById(int.Parse(CustomerId));
+
+
+        transfer.UserFromId = CustomerId;
+    }
+
+    private void Transfer()
+    {
+        NavigationManager.NavigateTo("/customers");
+    }
+
 }
+
+    }

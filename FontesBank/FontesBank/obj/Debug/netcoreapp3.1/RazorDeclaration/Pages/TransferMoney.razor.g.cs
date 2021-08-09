@@ -75,7 +75,28 @@ using FontesBank.Shared;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/transferMoney")]
+#nullable restore
+#line 3 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\TransferMoney.razor"
+using Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\TransferMoney.razor"
+using FontesBank.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\TransferMoney.razor"
+using Microsoft.Extensions.Configuration;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/transferMoney/{customerId}")]
     public partial class TransferMoney : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -83,6 +104,38 @@ using FontesBank.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 50 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\TransferMoney.razor"
+       
+
+    TransferModel transfer = new TransferModel();
+    UserModel user;
+    List<UserModel> users;
+
+    [Parameter]
+    public string CustomerId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await _user.GetUsers();
+        user = await _user.GetUserById(int.Parse(CustomerId));
+
+
+        transfer.UserFromId = CustomerId;
+    }
+
+    private void Transfer()
+    {
+        NavigationManager.NavigateTo("/customers");
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IConfiguration _config { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserService _user { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591
