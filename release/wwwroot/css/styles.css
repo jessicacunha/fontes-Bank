@@ -1,0 +1,21 @@
+﻿.title {
+    text-align: center !important;
+    background-color: white;
+    color: #247BA0 !important;
+}
+
+.form-control{
+    width: 50% !important;
+}
+
+.img_logoNav {
+    width: 90% !important;
+    border: none;
+    align-content: center !important;
+}
+
+.img_logo {
+    width: 60% !important;
+    border: none;
+    align-content: center !important;
+}
