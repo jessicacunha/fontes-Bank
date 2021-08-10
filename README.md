@@ -1,5 +1,5 @@
 # fontes-Bank
-GRIP@ Sparks Foundation web development and designing internship Task-1: Basic Banking website
+Task-1: Basic Banking website
 
 Fontes Bank is a Basic Banking website.
 This repository contains the tasks that I completed while working as an intern for The Sparks Foundation.
