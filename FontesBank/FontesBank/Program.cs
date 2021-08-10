@@ -22,7 +22,8 @@ namespace FontesBank
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    //webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>().UseKestrel().UseUrls("http://159.89.84.185:5010");
                 });
     }
 }
