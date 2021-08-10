@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M9bkxNxFnGkKU7NhA41ApwYj+9NappEp/9Qgid+2R0I0UBb0eXT62H/EyD41ufzwXLDBuacPhKrlJ2Q6HsggMw==",
+  "dgSpecHash": "gV+vMHe69LyRFWtrJ0cYekYYTzSw7p4ngCwycE0/7sVxEXam/opdG/JutjL4dKSdYolOz5fFTJ64rTpAShxlTQ==",
   "success": true,
-  "projectFilePath": "D:\\Projetos\\fontesBank\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj",
+  "projectFilePath": "D:\\Projetos\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jessi\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\jessi\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",

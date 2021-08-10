@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projetos\\fontesBank\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj": {}
+    "D:\\Projetos\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj": {}
   },
   "projects": {
-    "D:\\Projetos\\fontesBank\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj": {
+    "D:\\Projetos\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projetos\\fontesBank\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj",
+        "projectUniqueName": "D:\\Projetos\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj",
         "projectName": "FontesBank",
-        "projectPath": "D:\\Projetos\\fontesBank\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj",
+        "projectPath": "D:\\Projetos\\fontes-Bank\\FontesBank\\FontesBank\\FontesBank.csproj",
         "packagesPath": "C:\\Users\\jessi\\.nuget\\packages\\",
-        "outputPath": "D:\\Projetos\\fontesBank\\fontes-Bank\\FontesBank\\FontesBank\\obj\\",
+        "outputPath": "D:\\Projetos\\fontes-Bank\\FontesBank\\FontesBank\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jessi\\AppData\\Roaming\\NuGet\\NuGet.Config",
