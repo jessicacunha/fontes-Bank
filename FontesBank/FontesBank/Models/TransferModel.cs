@@ -9,5 +9,6 @@ namespace FontesBank.Models
         public string Amount { get; set; }
         public DateTime Date { get; set; }
         public string UserName { get; set; }
+
     }
 }

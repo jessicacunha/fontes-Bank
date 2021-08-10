@@ -105,11 +105,11 @@ using Microsoft.Extensions.Configuration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
+#line 47 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\Customers.razor"
        
 
     List<UserModel> users;
-   
+
 
     protected override async Task OnInitializedAsync()
     {

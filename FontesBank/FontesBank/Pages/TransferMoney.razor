@@ -1,4 +1,5 @@
-﻿@page "/transferMoney/{customerId}"
+﻿
+@page "/transferMoney/{customerId}"
 
 @using Data
 @using FontesBank.Models
@@ -9,52 +10,84 @@
 @inject ITransferService _transfer
 @inject IJSRuntime JsRuntime
 
-<h1>Transaction</h1>
-
-<h3>From:</h3>
-
-<h2><b>@user.Name</b></h2>
 
 
-<EditForm Model="user">
-    <div class="form-group row">
+<br />
+<br />
 
+<h1 class="title">Transfer Money</h1>
 
-        <label class="col-sm-2 col-form-label">
-            To:
-        </label>
-        <div class="col-sm-10">
-            <InputSelect Model="user" id="id" @bind-Value="transfer.UserToId">
-                <option value="null">-- Select -- </option>
-                *@foreach (var cnt in users)
-                {
-                    <option value="@cnt.Id">@cnt.Name </option>
-                }
-            </InputSelect>
+<br />
+
+<div class="row col-md-12">
+
+        <div class="card col-md-6">
+            <div class="card-body">
+                <h4 class="card-title text-center"><b>From:</b></h4>
+                <br />
+                <p class="card-text"><b>Name: </b>@user.Name</p>
+                <p class="card-text"><b>E-mail: </b>@user.Email</p>
+                <p class="card-text"><b>Birth Date: </b>@(user.BirthDate.ToString("dd/MM/yyyy"))</p>
+                <p class="card-text"><b>Address: </b>@user.Address</p>
+                <p class="card-text"><b>Current Balance: </b>@string.Format("{0:C}", user.CurrentBalance)</p>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="firstName" class="col-sm-2 col-form-label">
-            Amount:
-        </label>
-        <div class="col-sm-10">
-            <InputText id="amount" class="form-control" placeholder="0,00" type="number"
-                       @bind-Value="transfer.Amount" />
-        </div>
-    </div>
-</EditForm>
+
+    <div class="card col-md-6">
+        <br />
+        <h4 class="card-title text-center"><b>Transfer Details</b></h4>
+        <EditForm Model="user">
+            <br />
+            <div class="form-group row">
+                <label for="firstName" class="col-sm-2 col-form-label">
+                    <b>Name: </b>
+                </label>
+                <div class="col-sm-10">
+                    <InputSelect Model="user" id="id" class="form-control" @bind-Value="transfer.UserToId">
+                        <option value="null">-- Select -- </option>
+                        *@foreach (var cnt in users)
+                        {
+                            <option value="@cnt.Id">@cnt.Name </option>
+                        }
+                    </InputSelect>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="firstName" class="col-sm-2 col-form-label">
+                    <b>Amount: </b>
+                </label>
+                <div class="col-sm-10">
+                    <InputText id="amount" class="form-control" placeholder="0,00" type="number"
+                               @bind-Value="transfer.Amount" />
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" @onclick="() => Transfers()">
+                Transfer Money
+            </button>
 
 
-<button type="button" class="btn btn-primary" @onclick="() => Transfers()">
-    Transfer Money
-</button>
+            @if (errorMessage != "")
+            {
+                <br />
+                <br />
+                <div class="alert alert-danger text-center" role="alert">
+                    @errorMessage
+                </div>
+            }
+        </EditForm>
 
-@if (errorMessage != "")
-{
-    <div class="alert alert-danger" role="alert">
-        @errorMessage
+
+
+
     </div>
-}
+</div>
+
+
+
+
 
 
 @code {

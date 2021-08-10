@@ -1,18 +1,32 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
 
-<h1>
-    Welcome to Fontes Bank!
-</h1>
-<hr />
+<div class="row background_page">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <li class="nav-item px-3">
+            <img src="/css/LogoCompelto-removebg-preview.png" asp-append-version="true" class="img_logoNav"/>
+        </li>
 
-<div class="col-md-12">
+        <br />
+        <br />
+        <br />
+        <button type="button" class="btn btn-primary btn-lg" @onclick="ViewCustomers">
+            View all Customers
+        </button>
 
-    <button type="button" class="btn btn-primary" @onclick="ViewCustomers">
-        View all Customers
-    </button>
+    </div>
+
+    <div class="col-md-3"></div>
 
 </div>
+
+
 
 
 @code {

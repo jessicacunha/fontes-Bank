@@ -15,7 +15,7 @@ namespace FontesBank.Data
 
         public async Task SaveTransfer(TransferModel transferModel)
         {              
-            string sql = "insert into transaction(FromUserId, ToUserId, Amount, Date) values (@UserFromId, @UserToId, @Amount, now())";
+            string sql = "insert into transaction(FromUserId, ToUserId, Amount, Date) values (@UserFromId, @UserToId, @Amount, Now())";
             await DatabaseService.SaveData(sql, transferModel, _config.GetConnectionString("default"));
         }
 

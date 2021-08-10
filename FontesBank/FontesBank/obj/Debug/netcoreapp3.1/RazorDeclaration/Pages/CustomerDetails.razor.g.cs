@@ -105,7 +105,7 @@ using Microsoft.Extensions.Configuration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 74 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
+#line 79 "D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\Pages\CustomerDetails.razor"
        
 
     UserModel user;

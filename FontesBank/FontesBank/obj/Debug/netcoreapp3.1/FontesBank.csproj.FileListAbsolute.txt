@@ -46,10 +46,8 @@ D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\FontesBank.genruntimeconfig.cache
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\FontesBank.csproj.CopyComplete
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Customers.razor.g.cs
-D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Transaction.razor.g.cs
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TransferMoney.razor.g.cs
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\Razor\Pages\Customers.razor.g.cs
-D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\Razor\Pages\Transaction.razor.g.cs
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\obj\Debug\netcoreapp3.1\Razor\Pages\TransferMoney.razor.g.cs
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 D:\Projetos\fontesBank\fontes-Bank\FontesBank\FontesBank\bin\Debug\netcoreapp3.1\Dapper.dll

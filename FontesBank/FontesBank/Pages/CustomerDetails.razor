@@ -11,65 +11,70 @@
 
 
 
+<br />
+<br />
 
-<h3>CustomerDetails</h3>
+<h1 class="title">Customers Details</h1>
 
-@if (user == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <div class="row">
-        <div class="card col-md-4">
-            <div class="card-body">
-                <h4 class="card-title"><b>@user.Name</b></h4>
-                <p class="card-text"><b>E-mail: </b>@user.Email</p>
-                <p class="card-text"><b>Birth Date: </b>@user.BirthDate</p>
-                <p class="card-text"><b>Address: </b>@user.Address</p>
-                <p class="card-text"><b>Current Balance: </b>@user.CurrentBalance</p>
-
-            </div>
-
+<br />
+<div class="row col-md-12">
+    <div class="card col-md-6">
+        <div class="card-body">
+            <h4 class="card-title text-center"><b>@user.Name</b></h4>
+            <br />
+            <p class="card-text"><b>E-mail: </b>@user.Email</p>
+            <p class="card-text"><b>Birth Date: </b>@(user.BirthDate.ToString("dd/MM/yyyy"))</p>
+            <p class="card-text"><b>Address: </b>@user.Address</p>
+            <p class="card-text"><b>Current Balance: </b>@string.Format("{0:C}", user.CurrentBalance)</p>
             <button type="button" class="btn btn-primary" @onclick="() => TransferMoney(user.Id)">
                 Transfer Money
             </button>
         </div>
 
-        <div class="card col-md-4">
-            <div class="card-body">
-                <h4 class="card-title"><b>Transaction History</b></h4>
-                <div class="col-md-8">
-                    <table class="table">
-                        <thead>
+
+    </div>
+
+    <div class="card col-md-6">
+        <div class="card-body">
+            <h4 class="card-title text-center"><b>Transaction History</b></h4>
+            <br />
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Action </th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dtls in transfers)
+                        {
                             <tr>
-                                <th scope="col">Action </th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Date</th>
+                                <td>
+                                    @if (dtls.UserFromId == CustomerId)
+                                    {
+                                        <p><span class="oi oi-arrow-thick-bottom text-danger" aria-hidden="true"></span> From</p>
+                                    }
+                                    else
+                                    {
+                                        <p><span class="oi oi-arrow-thick-top text-success" aria-hidden="true"></span> To</p>
+                                    }
+                                </td>
+                                <td>@dtls.UserName</td>
+                                <td>@string.Format("{0:C}", float.Parse(dtls.Amount))</td>
+                                <td>@(dtls.Date.ToString("dd/MM/yyyy"))</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var dtls in transfers)
-                            {
-                                <tr>
-                                    <td>@(dtls.UserFromId == CustomerId ? "From": "To") </td>
-                                    <td>@dtls.UserName</td>
-                                    <td>@dtls.Amount</td>
-                                    <td>@dtls.Date</td>
+                        }
 
-                                </tr>
-                            }
-
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-
-
-}
+</div>
 
 @code {
 
