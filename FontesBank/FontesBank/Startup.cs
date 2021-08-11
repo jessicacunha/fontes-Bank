@@ -17,15 +17,27 @@ namespace FontesBank
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment _env { get; }
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        {
+            Configuration = configuration;
+            _env = env;
+        }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<ITransferService, TransferService>();
+            services.AddServerSideBlazor().AddCircuitOptions(option =>
+            {
+                if (_env.IsDevelopment()) //Only add details when debugging.
+                {
+                    option.DetailedErrors = true;
+                }
+            });
 
         }
                 
