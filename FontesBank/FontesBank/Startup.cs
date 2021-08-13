@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using System.Globalization;
 
 namespace FontesBank
 {
@@ -37,8 +37,10 @@ namespace FontesBank
                     option.DetailedErrors = true;
                 
             });
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-IE");
 
         }
+
                 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,6 +55,8 @@ namespace FontesBank
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-IE");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
