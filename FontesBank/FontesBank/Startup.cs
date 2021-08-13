@@ -33,10 +33,9 @@ namespace FontesBank
             services.AddSingleton<ITransferService, TransferService>();
             services.AddServerSideBlazor().AddCircuitOptions(option =>
             {
-                if (_env.IsDevelopment()) //Only add details when debugging.
-                {
+                
                     option.DetailedErrors = true;
-                }
+                
             });
 
         }
